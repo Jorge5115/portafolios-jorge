@@ -1,0 +1,57 @@
+/* ===== HEADER CENTRADO CON FOTO PEGADA AL BORDE ===== */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra todo el contenido */
+  padding: 1.5rem 0; /* Solo padding vertical */
+  background-color: var(--bg-header);
+  max-width: 1200px;
+  margin: 0 auto; /* Centrado horizontal */
+  position: relative; /* Para ajuste fino de la foto */
+}
+
+/* Resto de tus estilos compactos se mantienen igual */
+.header-info {
+   flex: 0 1 auto; /* No se expande forzadamente */
+  padding-right: 12rem;
+  text-align: left;
+}
+
+.header-name {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 0 0 0.1rem 0;
+  line-height: 1;
+}
+
+.header-title {
+  color: var(--text-color);
+  font-size: 1.1rem; /* Tamaño ligeramente reducido */
+  margin: 0 0 0.1rem 0; /* Mínimo espacio */
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.contacto p {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.2rem 0; /* Espacio casi eliminado */
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+/* Foto pegada a la información */
+.header-foto {
+  margin-top: 30px;
+  margin-left: 0.5rem; /* Espacio mínimo a la izquierda */
+}
+
+.foto-perfil {
+  width: 130px; /* Ligeramente más pequeña */
+  height: 130px;
+  border-radius: 20%;
+  object-fit: cover;
+  border: 2px solid var(--primary-color); /* Borde más fino */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
