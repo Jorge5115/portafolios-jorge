@@ -1,29 +1,32 @@
-import React from 'react';
-import fotoPerfil from './assets/foto-jorge.jpg';
-import './styles/globals.css'; // Importamos solo globals.css
+import React, { useState } from 'react';
+import Header from './components/Header';
+import './styles/globals.css';
 
-const Header = () => {
+function App() {
+  // Estados para controlar tema e idioma
+  const [darkMode, setDarkMode] = useState(false);
+  const [language, setLanguage] = useState('es'); // 'es' o 'en'
+
+  // Función para cambiar el tema
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Función para cambiar el idioma
+  const toggleLanguage = () => {
+    setLanguage(prevLang => prevLang === 'es' ? 'en' : 'es');
+  };
+
   return (
-    <header className="header-container">
-      <div className="header-info">
-        <h1 className="header-name">Jorge Casanova Sánchez</h1>
-        <p className="header-title">Desarrollador Full Stack | React & Node.js</p>
-        <div className="contacto">
-          <p>📧 jorge.casanova.sanchez@gmail.com</p>
-          <p>📞 +34 123 456 789</p>
-          {/* Botones sociales pueden agregarse aquí */}
-        </div>
-      </div>
-      
-      <div className="header-foto">
-        <img 
-          src={fotoPerfil} 
-          alt="Foto de Jorge" 
-          className="foto-perfil"
-        />
-      </div>
-    </header>
+    <div className={`app ${darkMode ? 'dark-theme' : ''}`}>
+      <Header 
+        darkMode={darkMode}
+        onToggleTheme={toggleTheme}
+        language={language}
+        onToggleLanguage={toggleLanguage}
+      />
+    </div>
   );
-};
+}
 
-export default Header;
+export default App;

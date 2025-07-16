@@ -1,0 +1,26 @@
+.social-buttons {
+  border: 2px solid red; /* Temporal para ver el área */
+  z-index: 1000; /* Para que esté por encima */
+  position: relative;
+  background: white; /* Fondo sólido si hay superposición */
+}
+.social-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Estilos específicos */
+.linkedin { background-color: #0A66C2; }
+.github { background-color: #333; }
+.language { background-color: #555; }
+.theme { background-color: #777; }
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
