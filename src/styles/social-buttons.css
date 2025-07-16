@@ -1,26 +1,56 @@
 .social-buttons {
-  border: 2px solid red; /* Temporal para ver el área */
-  z-index: 1000; /* Para que esté por encima */
-  position: relative;
-  background: white; /* Fondo sólido si hay superposición */
-}
-.social-btn {
-  padding: 0.6rem 1rem;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  display: flex;
+  gap: 0.6rem;       /* Espacio entre botones reducido */
+  margin-top: 1rem;
+  flex-wrap: wrap;   /* Para responsive */
 }
 
-/* Estilos específicos */
-.linkedin { background-color: #0A66C2; }
+.social-btn {
+  padding: 0.2rem 0.2rem; /* Más compacto (antes 0.6rem 1rem) */
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;  /* Tamaño de texto reducido */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: max-content; /* Evita que se encojan demasiado */
+}
+
+/* Iconos (si los usas) */
+.social-btn img, 
+.social-btn svg {
+  width: 14px;       /* Iconos más pequeños */
+  height: 14px;      /* Espacio entre icono y texto */
+  object-fit: contain;
+}
+
+/* Colores (se mantienen igual) */
+.linkedin { background-color: #ffffff;
+border: 1px solid #d3d3d3; }
 .github { background-color: #333; }
 .language { background-color: #555; }
 .theme { background-color: #777; }
 
+/* Efectos hover más sutiles */
 .social-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  background-color: #c7c7c7;
+  transform: translateY(-1px); /* Menor elevación */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.fade {
+  transition: opacity 0.5s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
