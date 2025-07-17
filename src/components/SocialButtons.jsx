@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/social-buttons.css';
 import linkedinIcon from '../assets/linkedin-icon.jpg';
-
+import githubIcon from '../assets/github-icon.jpg';
+import translatorIcon from '../assets/translator-icon.jpg';
+import lightThemeIcon from '../assets/light_theme-icon.jpg';
+import darkThemeIcon from '../assets/dark_theme-icon.jpg'; 
 
 const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
-  const [showLang, setShowLang] = useState(language);
-  const [isFading, setIsFading] = useState(false);
-
-  useEffect(() => {
-    setIsFading(true); // inicia animación
-    const timeout = setTimeout(() => {
-      setShowLang(language); // cambia texto después de fade out
-      setIsFading(false);    // termina animación
-    }, 1000); // 200ms deben coincidir con CSS
-
-    return () => clearTimeout(timeout);
-  }, [language]);
-
   return (
     <div className="social-buttons">
       {/* Botón LinkedIn */}
@@ -39,31 +29,54 @@ const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) 
 
       {/* Botón GitHub */}
       <a
-        href="https://github.com/tu-usuario"
+        href="https://github.com/Jorge5115"
         target="_blank"
         rel="noopener noreferrer"
         className="social-btn github"
       >
-        GitHub
+         <img 
+          src={githubIcon} 
+          alt="LinkedIn" 
+          style={{  
+            width: '20px',
+            height: '20px',
+            objectFit: ' contain'
+          }}/>
       </a>
 
-      {/* Botón idioma con transición real */}
+      {/* Botón Idioma */}
       <button 
         onClick={onToggleLanguage}
         className="social-btn language"
+        aria-label="Cambiar idioma"
       >
-        <span className={`fade-text ${isFading ? 'fade-out' : 'fade-in'}`}>
-          {showLang.toUpperCase()}
-        </span>
+        <img 
+          src={translatorIcon} 
+          alt="LinkedIn" 
+          style={{
+            width: '20px',
+            height: '20px',
+            objectFit: ' contain'
+          }}/>
       </button>
 
 
-      {/* Botón Tema */}
+      {/* Botón Tema con iconos dinámicos */}
       <button 
         onClick={onToggleTheme}
         className="social-btn theme"
+        aria-label={darkMode ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
       >
-        {darkMode ? '☀️' : '🌙'}
+        <img 
+          src={darkMode ? lightThemeIcon : darkThemeIcon} 
+          alt={darkMode ? 'Tema claro' : 'Tema oscuro'} 
+          className="theme-icon"
+          style={{ 
+            width: '20px',
+            height: '20px', 
+            objectFit: 'contain'
+        }}
+        />
       </button>
     </div>
   );

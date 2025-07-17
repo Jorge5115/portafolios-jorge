@@ -30,10 +30,13 @@
 
 /* Colores (se mantienen igual) */
 .linkedin { background-color: #ffffff;
-border: 1px solid #d3d3d3; }
-.github { background-color: #333; }
-.language { background-color: #555; }
-.theme { background-color: #777; }
+border: 1px solid #d3d3d3; padding: 8px;}
+.github { background-color: #ffffff; 
+border: 1px solid #d3d3d3; padding: 8px;}
+.language { background-color: #ffffff;
+border: 1px solid #d3d3d3;  padding: 8px;}
+.theme { background-color: #ffffff; 
+border: 1px solid #d3d3d3;  padding: 8px;}
 
 /* Efectos hover más sutiles */
 .social-btn:hover {

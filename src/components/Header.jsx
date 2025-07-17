@@ -18,7 +18,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         : 'Junior Developer focused on Full-Stack'
       );
       setFade(false); // inicia fade-in
-    }, 500); // medio segundo de desvanecimiento
+    }, 300); // medio segundo de desvanecimiento
 
     return () => clearTimeout(timeout);
   }, [language]);
