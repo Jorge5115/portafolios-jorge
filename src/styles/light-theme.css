@@ -1,0 +1,14 @@
+:root.light-theme {
+  /* Colores de fondo */
+  --bg-primary: #ffffff;       /* Fondo principal (página) */
+  --bg-header: transparent;       /* Fondo del header (opcional) */
+  
+  /* Colores de texto */
+  --text-primary: #333333;    /* h1, títulos principales */
+  --text-secondary: #555555;  /* p, textos secundarios */
+  
+  /* Botones (opcional, para mantener consistencia) */
+  --bg-button-theme: #f0f0f0;
+  --border-button-theme: #ddd;
+  --icon-filter: none;
+}

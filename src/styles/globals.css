@@ -55,3 +55,24 @@
   border: 2px solid var(--primary-color); /* Borde más fino */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Estilos base para la página */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary); /* Color por defecto para textos */
+}
+
+/* Estilos para títulos (h1) */
+h1, .header-name {
+  color: var(--text-primary);
+}
+
+/* Estilos para párrafos (p) */
+p, .header-title, .contacto p {
+  color: var(--text-secondary);
+}
+
+/* Opcional: Fondo del header si lo quieres diferente */
+.header-container {
+  background-color: var(--bg-header);
+}

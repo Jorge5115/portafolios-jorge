@@ -57,3 +57,24 @@ border: 1px solid #d3d3d3;  padding: 8px;}
   opacity: 1;
 }
 
+/* Estilos base del botón de tema */
+.social-btn.theme {
+  transition: all 0.3s ease;
+}
+
+/* Modo claro */
+.social-btn.theme-light {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+/* Modo oscuro */
+.social-btn.theme-dark {
+  background: #333;
+  border: 1px solid #555;
+}
+
+/* Opcional: Efecto hover para mejor interactividad */
+.social-btn.theme:hover {
+  transform: scale(1.05);
+}

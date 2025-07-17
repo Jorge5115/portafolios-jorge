@@ -1,0 +1,14 @@
+:root.dark-theme {
+   /* Colores de fondo */
+  --bg-primary: #1a1a1a;       /* Fondo principal oscuro */
+  --bg-header: transparent;        /* Fondo del header oscuro */
+  
+  /* Colores de texto */
+  --text-primary: #f0f0f0;     /* h1 en blanco */
+  --text-secondary: #cccccc;   /* p en gris claro */
+  
+  /* Botones */
+  --bg-button-theme: #333;
+  --border-button-theme: #555;
+  --icon-filter: invert(1);
+}

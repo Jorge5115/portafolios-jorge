@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react';
 import fotoPerfil from '../assets/foto-jorge.jpg';
 import SocialButtons from './SocialButtons';
 import '../styles/globals.css';
+import '../styles/light-theme.css'; 
+import '../styles/dark-theme.css'; 
 
 const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
+  // Efecto para cambiar el tema en el HTML root
+  useEffect(() => {
+    document.documentElement.className = darkMode ? 'dark-theme' : 'light-theme';
+  }, [darkMode]);
+
+  
   const [visibleText, setVisibleText] = useState(language === 'es'
     ? 'Desarrollador Junior con enfoque en Full-Stack'
     : 'Junior Developer focused on Full-Stack'

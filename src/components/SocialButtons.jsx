@@ -61,21 +61,25 @@ const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) 
       </button>
 
 
-      {/* Botón Tema con iconos dinámicos */}
+      {/* Botón Tema */}
       <button 
         onClick={onToggleTheme}
         className="social-btn theme"
         aria-label={darkMode ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
+        style={{
+          background: 'var(--bg-button-theme)',
+          border: '1px solid var(--border-button-theme)',
+        }}
       >
         <img 
           src={darkMode ? lightThemeIcon : darkThemeIcon} 
           alt={darkMode ? 'Tema claro' : 'Tema oscuro'} 
-          className="theme-icon"
           style={{ 
             width: '20px',
             height: '20px', 
-            objectFit: 'contain'
-        }}
+            objectFit: 'contain',
+            filter: 'var(--icon-filter)',
+          }}
         />
       </button>
     </div>
