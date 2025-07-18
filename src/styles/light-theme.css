@@ -11,4 +11,8 @@
   --bg-button-theme: #ffffff;
   --border-button-theme: #ddd;
   --icon-filter: opacity(0.6);
+
+  /* Títulos en negrita */
+  --title-primary: #333333;  
+  --title-secondary: #747474; 
 }

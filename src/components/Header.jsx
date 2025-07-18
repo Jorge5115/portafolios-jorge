@@ -33,8 +33,34 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
     return () => clearTimeout(timeout);
   }, [language]);
 
+  // Nuevo estado y fade para el texto "Sobre mí"
+  const aboutMeEs = `Titulado en Desarrollo de Aplicaciones Multiplataforma, con muchas ganas de aprender y dominar el campo del desarrollo FullStack. Mi objetivo es dominar tanto el frontend como el backend para crear aplicaciones eficientes y escalables que impulsen el crecimiento empresarial.\n
+  Actualmente enfocado en:
+  - Crear proyectos Full-Stack completos con React + Spring Boot como desarrollador autodidacta.
+  - Aplicar los principios de Clean Architecture y Domain-Driven Design en mis desarrollos.
+  - Transformar cada error en oportunidades de aprendizaje y mejora continua.`;
+
+  const aboutMeEn = `Graduated in Multiplatform Application Development, eager to learn and master the field of FullStack development. My goal is to master both frontend and backend to create efficient and scalable applications that drive business growth.\n
+  Currently focused on:
+  - Building complete Full-Stack projects with React + Spring Boot as a self-taught developer.
+  - Applying the principles of Clean Architecture and Domain-Driven Design in my developments.
+  - Turning every mistake into opportunities for learning and continuous improvement.`;
+
+  const [aboutMeText, setAboutMeText] = useState(language === 'es' ? aboutMeEs : aboutMeEn);
+  const [aboutFade, setAboutFade] = useState(false);
+
+  useEffect(() => {
+    setAboutFade(true);
+    const timeout = setTimeout(() => {
+      setAboutMeText(language === 'es' ? aboutMeEs : aboutMeEn);
+      setAboutFade(false);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [language, aboutMeEs, aboutMeEn]);
+
 
   return (
+    <>
     <header className="header-container">
       <div className="header-info">
         <h1 className="header-name">Jorge Casanova Sánchez</h1>
@@ -74,6 +100,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
             onToggleLanguage={onToggleLanguage}
           />
         </div>
+
       </div>
       
       <div className="header-foto">
@@ -84,6 +111,24 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         />
       </div>
     </header>
+
+    <div className="body-container">
+      <h1 className="about-me-title">{language === 'es' ? 'Sobre mí' : 'About'}</h1>
+        <p className={`about-me-content fade ${aboutFade ? 'fade-out' : 'fade-in'}`}>
+          {aboutMeText.split('\n').map((line, i) => (
+            <span key={i}>
+              {line.trim()}
+              <br />
+            </span>
+          ))}
+        </p>
+    </div>
+
+    <div className="experience-container">
+      <h1 className="experience-title">{language === 'es' ? 'Mi experiencia' : 'Experience'}</h1>
+        
+    </div>  
+    </>
   );
 };
 

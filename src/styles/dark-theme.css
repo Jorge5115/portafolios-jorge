@@ -11,4 +11,8 @@
   --bg-button-theme: #333;
   --border-button-theme: #555;
   --icon-filter: invert(1);
+
+  /* Títulos en negrita */
+  --title-primary: #f5f5f5;  
+  --title-secondary: #ececec; 
 }
