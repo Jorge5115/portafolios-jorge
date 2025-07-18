@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/social-buttons.css';
+import mailIcon from '../assets/mail-icon.jpg';
 import linkedinIcon from '../assets/linkedin-icon.jpg';
 import githubIcon from '../assets/github-icon.jpg';
 import translatorIcon from '../assets/translator-icon.jpg';
@@ -8,6 +9,7 @@ import darkThemeIcon from '../assets/dark_theme-icon.jpg';
 
 const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
   const tooltips = {
+  mail: language === 'es' ? 'Enviar correo a jorge.casanova.sanchez@gmail.com' : 'Send an email to jorge.casanova.sanchez@gmail.com',  
   linkedin: language === 'es' ? 'Ver perfil de LinkedIn' : 'View LinkedIn profile',
   github: language === 'es' ? 'Ver perfil de GitHub' : 'View GitHub profile',
   language: language === 'es' ? 'Cambiar idioma' : 'Change language',
@@ -18,6 +20,30 @@ const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) 
   
   return (
     <div className="social-buttons">
+      {/* Botón Correo */}
+      <a
+        href="mailto:jorge.casanova.sanchez@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-btn mail"
+        title={tooltips.mail}
+        style={{
+            background: 'var(--bg-button-theme)',
+            border: '1px solid var(--border-button-theme)',
+          }}
+        >
+        <img 
+          src={mailIcon} 
+          alt="Email" 
+          style={{ 
+            width: '20px',
+            height: '20px', 
+            objectFit: 'contain',
+            filter: 'var(--icon-filter)',
+          }}
+        />
+      </a>
+      
       {/* Botón LinkedIn */}
       <a
         href="https://www.linkedin.com/in/jorge-casanova-s%C3%A1nchez-763087320/"

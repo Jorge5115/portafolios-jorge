@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import fotoPerfil from '../assets/foto-jorge.jpg';
 import locationIcon from '../assets/world-icon.jpg'; 
+import telephoneIcon from '../assets/telephone-icon.jpg';
 import SocialButtons from './SocialButtons';
 import '../styles/globals.css';
 import '../styles/light-theme.css'; 
@@ -54,9 +55,17 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
               alt="Icono de ubicación" 
               className="location-icon"
             />
-            Guadarrama, Madrid, España
+            Guadarrama, Madrid, {language === 'es' ? 'España' : 'Spain'}
           </p>
-          <p>📞 +34 123 456 789</p>
+          <p className="telephone">
+            <img 
+              src={telephoneIcon} 
+              alt="Icono de teléfono" 
+              className="telephone-icon"
+            />
+            648 07 50 79
+          </p>
+
           {/* Botones sociales */}
           <SocialButtons 
             darkMode={darkMode}

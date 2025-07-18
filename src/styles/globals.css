@@ -74,6 +74,7 @@ p {
 
 .location-icon {
   width: 16px;
+  padding-right: 1px;
   vertical-align: middle;
   filter: var(--icon-filter);
   transition: filter 0.3s ease;
@@ -85,6 +86,22 @@ p {
   align-items: center;
   color: var(--text-secondary);
 }
+
+.telephone-icon {
+  width: 16px;
+  padding-right: 1px;
+  vertical-align: middle;
+  filter: var(--icon-filter);
+  transition: filter 0.3s ease;
+}
+
+.telephone {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+}
+
 
 /* Estilos base para la página */
 body {

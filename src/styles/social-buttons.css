@@ -29,6 +29,8 @@
 }
 
 /* Colores (se mantienen igual) */
+.mail{ background-color: #ffffff;
+border: 1px solid #d3d3d3; padding: 8px;}
 .linkedin { background-color: #ffffff;
 border: 1px solid #d3d3d3; padding: 8px;}
 .github { background-color: #ffffff; 
