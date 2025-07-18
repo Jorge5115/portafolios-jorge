@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 /* ===== HEADER CENTRADO CON FOTO PEGADA AL BORDE ===== */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: center; /* Centra todo el contenido */
-  padding: 1.5rem 0; /* Solo padding vertical */
+  padding: 2.5rem 0; /* Solo padding vertical */
   background-color: var(--bg-header);
   max-width: 1200px;
   margin: 0 auto; /* Centrado horizontal */
@@ -12,21 +15,24 @@
 
 /* Resto de tus estilos compactos se mantienen igual */
 .header-info {
-   flex: 0 1 auto; /* No se expande forzadamente */
-  padding-right: 12rem;
+  min-width: 475px;
+  max-width: 475px;
+  flex: 0 1 auto; /* No se expande forzadamente */
+  padding-right: 6rem;
   text-align: left;
 }
 
 .header-name {
   color: var(--primary-color);
-  font-size: 2rem;
-  margin: 0 0 0.1rem 0;
+  font-size: 1.6rem;
+  margin: 0 0 0.7rem 0;
   line-height: 1;
 }
 
 .header-title {
+  font-family: 'Poppins', sans-serif;
   color: var(--text-color);
-  font-size: 1.1rem; /* Tamaño ligeramente reducido */
+  font-size: 1.05rem; /* Tamaño ligeramente reducido */
   margin: 0 0 0.1rem 0; /* Mínimo espacio */
   font-weight: 500;
   line-height: 1.2;
@@ -43,17 +49,41 @@
 
 /* Foto pegada a la información */
 .header-foto {
-  margin-top: 30px;
+  margin-top: -60px;
   margin-left: 0.5rem; /* Espacio mínimo a la izquierda */
 }
 
 .foto-perfil {
   width: 130px; /* Ligeramente más pequeña */
   height: 130px;
-  border-radius: 20%;
+  border-radius: 18%;
   object-fit: cover;
   border: 2px solid var(--primary-color); /* Borde más fino */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500; /* Negrita para el nombre */
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400; /* Normal para el texto */
+}
+
+.location-icon {
+  width: 16px;
+  vertical-align: middle;
+  filter: var(--icon-filter);
+  transition: filter 0.3s ease;
+}
+
+.location {
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
 }
 
 /* Estilos base para la página */

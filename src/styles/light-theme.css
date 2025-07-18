@@ -8,7 +8,7 @@
   --text-secondary: #555555;  /* p, textos secundarios */
   
   /* Botones (opcional, para mantener consistencia) */
-  --bg-button-theme: #f0f0f0;
+  --bg-button-theme: #ffffff;
   --border-button-theme: #ddd;
-  --icon-filter: none;
+  --icon-filter: opacity(0.6);
 }

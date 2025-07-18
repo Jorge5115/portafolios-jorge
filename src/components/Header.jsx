@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import fotoPerfil from '../assets/foto-jorge.jpg';
+import locationIcon from '../assets/world-icon.jpg'; 
 import SocialButtons from './SocialButtons';
 import '../styles/globals.css';
 import '../styles/light-theme.css'; 
@@ -13,17 +14,17 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
 
   
   const [visibleText, setVisibleText] = useState(language === 'es'
-    ? 'Desarrollador Junior con enfoque en Full-Stack'
-    : 'Junior Developer focused on Full-Stack'
-  );
+    ? 'Desarrollador junior con enfoque en Full-Stack, decidido a construir soluciones completas y escalables, uniendo lógica y diseño con React y Spring.'
+    : 'Junior Developer with a focus on Full-Stack, determined to build complete and scalable solutions, combining logic and design learning React and Spring.'
+    );
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
     setFade(true); // inicia fade-out
     const timeout = setTimeout(() => {
       setVisibleText(language === 'es'
-        ? 'Desarrollador Junior con enfoque en Full-Stack'
-        : 'Junior Developer focused on Full-Stack'
+        ? 'Desarrollador Junior con enfoque en Full-Stack, \ndecidido a construir soluciones completas y escalables, \nuniendo lógica y diseño aprendiendo React y Spring.'
+        : 'Junior Developer with a focus on Full-Stack, \ndetermined to build complete and scalable solutions, \ncombining logic and design learning React and Spring.'
       );
       setFade(false); // inicia fade-in
     }, 300); // medio segundo de desvanecimiento
@@ -38,11 +39,23 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         <h1 className="header-name">Jorge Casanova Sánchez</h1>
         
         <p className={`header-title fade ${fade ? 'fade-out' : 'fade-in'}`}>
-          {visibleText}
+          {visibleText.split('\n').map((line, index) => (
+            <span key={index}>
+              {line}
+              <br />
+            </span>
+          ))}
         </p>
 
         <div className="contacto">
-          <p>📧 jorge.casanova.sanchez@gmail.com</p>
+          <p className="location">
+            <img 
+              src={locationIcon} 
+              alt="Icono de ubicación" 
+              className="location-icon"
+            />
+            Guadarrama, Madrid, España
+          </p>
           <p>📞 +34 123 456 789</p>
           {/* Botones sociales */}
           <SocialButtons 

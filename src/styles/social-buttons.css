@@ -7,7 +7,7 @@
 
 .social-btn {
   padding: 0.2rem 0.2rem; /* Más compacto (antes 0.6rem 1rem) */
-  border-radius: 4px;
+  border-radius: 10px;
   color: white;
   font-weight: 600;
   font-size: 0.85rem;  /* Tamaño de texto reducido */

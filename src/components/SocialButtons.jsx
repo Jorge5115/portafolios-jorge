@@ -7,6 +7,15 @@ import lightThemeIcon from '../assets/light_theme-icon.jpg';
 import darkThemeIcon from '../assets/dark_theme-icon.jpg'; 
 
 const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
+  const tooltips = {
+  linkedin: language === 'es' ? 'Ver perfil de LinkedIn' : 'View LinkedIn profile',
+  github: language === 'es' ? 'Ver perfil de GitHub' : 'View GitHub profile',
+  language: language === 'es' ? 'Cambiar idioma' : 'Change language',
+  theme: language === 'es' 
+    ? (darkMode ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro')
+    : (darkMode ? 'Switch to light theme' : 'Switch to dark theme'),
+  };
+  
   return (
     <div className="social-buttons">
       {/* Botón LinkedIn */}
@@ -15,14 +24,20 @@ const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) 
         target="_blank"
         rel="noopener noreferrer"
         className="social-btn linkedin"
-      >
+        title={tooltips.linkedin}
+        style={{
+            background: 'var(--bg-button-theme)',
+            border: '1px solid var(--border-button-theme)',
+          }}
+        >
         <img 
           src={linkedinIcon} 
           alt="LinkedIn" 
-          style={{
+          style={{ 
             width: '20px',
-            height: '20px',
-            objectFit: ' contain'
+            height: '20px', 
+            objectFit: 'contain',
+            filter: 'var(--icon-filter)',
           }}
         />
       </a>
@@ -33,31 +48,46 @@ const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) 
         target="_blank"
         rel="noopener noreferrer"
         className="social-btn github"
-      >
-         <img 
+        title={tooltips.github}
+        style={{
+          background: 'var(--bg-button-theme)',
+          border: '1px solid var(--border-button-theme)',
+        }}
+        >
+        <img 
           src={githubIcon} 
-          alt="LinkedIn" 
-          style={{  
+          alt="GitHub" 
+          style={{ 
             width: '20px',
-            height: '20px',
-            objectFit: ' contain'
-          }}/>
+            height: '20px', 
+            objectFit: 'contain',
+            filter: 'var(--icon-filter)',
+          }}
+        />
       </a>
+
 
       {/* Botón Idioma */}
       <button 
         onClick={onToggleLanguage}
         className="social-btn language"
         aria-label="Cambiar idioma"
-      >
+        title={tooltips.language}
+        style={{
+          background: 'var(--bg-button-theme)',
+          border: '1px solid var(--border-button-theme)',
+        }}
+        >
         <img 
           src={translatorIcon} 
-          alt="LinkedIn" 
-          style={{
+          alt="Cambiar idioma" 
+          style={{ 
             width: '20px',
-            height: '20px',
-            objectFit: ' contain'
-          }}/>
+            height: '20px', 
+            objectFit: 'contain',
+            filter: 'var(--icon-filter)',
+          }}
+        />
       </button>
 
 
@@ -66,6 +96,7 @@ const SocialButtons = ({ darkMode, onToggleTheme, language, onToggleLanguage }) 
         onClick={onToggleTheme}
         className="social-btn theme"
         aria-label={darkMode ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
+        title={tooltips.theme}
         style={{
           background: 'var(--bg-button-theme)',
           border: '1px solid var(--border-button-theme)',
