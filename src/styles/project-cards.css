@@ -1,0 +1,86 @@
+.project-card {
+  display: flex;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(--project-background);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  background: var(--project-background);
+}
+
+.left-column {
+  flex: 1;
+  padding: 1rem;
+  transition: flex 0.3s ease;
+}
+
+.left-column h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.left-column p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.tag {
+  background-color: #eee;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  color: #333;
+}
+
+/* === Right side hidden initially === */
+.right-column {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s ease;
+}
+
+/* === Reveal video on hover === */
+.project-card:hover .right-column {
+  width: 50%; /* o el tamaño que tú quieras */
+  padding: 1rem;
+}
+
+/* === Video fills the available space === */
+.project-card video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--project-card);
+}
+
+.project-title {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem; /* Espacio más consistente */
+  font-family: 'Poppins', sans-serif;
+}
+
+.project-card:hover .project-title {
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem; /* Espacio más consistente */
+  font-family: 'Poppins', sans-serif;
+}

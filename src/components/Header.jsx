@@ -3,9 +3,11 @@ import fotoPerfil from '../assets/foto-jorge.jpg';
 import locationIcon from '../assets/world-icon.jpg'; 
 import telephoneIcon from '../assets/telephone-icon.jpg';
 import SocialButtons from './SocialButtons';
+import ProjectCards from './ProjectCards';
 import '../styles/globals.css';
 import '../styles/light-theme.css'; 
 import '../styles/dark-theme.css'; 
+import projectDemo from '../assets/videos/first-project.mp4';
 
 const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
   // Efecto para cambiar el tema en el HTML root
@@ -169,6 +171,23 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
           <span className="education-range">Sep 2021 - Jun 2024</span>
         </div>
         <p className="degree-name">{language === 'es' ? 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)' : 'Advanced Technician in Multiplatform Application Development (DAM)'}</p>
+    </div>
+
+    <div className="projects-container">
+      <h1 className="projects-title">
+        {language === 'es' ? 'Proyectos' : 'Projects'}
+      </h1>
+
+      <ProjectCards
+        title="Nutrition App (App móvil)"
+        description={
+          language === 'es'
+            ? 'Blog personal donde comparto experiencias sobre desarrollo, productividad y más.'
+            : 'Personal blog where I share experiences about development, productivity, and more.'
+        }
+        tags={['Java', 'JavaFX', 'Móvil', 'Fitness', 'Salud']} // puedes añadir los tags que quieras
+        videoSrc={projectDemo}
+      />
     </div>
     </>
   );
