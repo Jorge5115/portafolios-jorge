@@ -158,6 +158,18 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         </p>
       </div>
     </div>
+
+    <div className="education-container">
+        <h1 className="education-title">
+          {language === 'es' ? 'Educación' : 'Education'}
+        </h1>
+
+        <div className="education-header">
+          <span className="university-name">I.E.S Infanta Elena</span>
+          <span className="education-range">Sep 2021 - Jun 2024</span>
+        </div>
+        <p className="degree-name">{language === 'es' ? 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)' : 'Advanced Technician in Multiplatform Application Development (DAM)'}</p>
+    </div>
     </>
   );
 };
