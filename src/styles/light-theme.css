@@ -15,4 +15,7 @@
   /* Títulos en negrita */
   --title-primary: #333333;  
   --title-secondary: #747474; 
+
+  /* Botón del tipo de trabajo */
+  --button-color: #d6d6d6; 
 }

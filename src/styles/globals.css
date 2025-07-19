@@ -180,3 +180,49 @@ p, .header-title, .contacto p {
   margin-bottom: 1rem; /* Espacio más consistente */
   font-family: 'Poppins', sans-serif;
 }
+
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* por si hay poco espacio en móvil */
+  gap: 0.5rem;
+  
+  margin-bottom: -5px;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: var(--title-primary);
+}
+
+.work-type {
+  font-weight: bold;
+  background-color: var(--button-color);
+  color: var(--text-primary);
+  padding: 0.2rem 0.8rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.date-range {
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+.work-range {
+  font-size: 0.95rem;
+  color: var(--title-primary);
+  margin-bottom: -5px;
+}
+
+.experience-content {
+
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}

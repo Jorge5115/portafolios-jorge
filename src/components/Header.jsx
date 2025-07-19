@@ -58,6 +58,23 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
     return () => clearTimeout(timeout);
   }, [language, aboutMeEs, aboutMeEn]);
 
+   // Nuevo estado y fade para el texto "First experience"
+  const firstExperienceEs = `Diseño y desarrollo de un ERP a medida utilizando JavaScript, optimizando la interfaz de usuario para mejorar la experiencia del cliente. Implementación de soluciones web personalizadas adaptadas a diversas necesidades empresariales, así como mejoras en los procesos logísticos que contribuyeron a la eficiencia del código. Además, desarrollé funciones para crear, filtrar y editar información mediante MySQL Shell en Visual Studio.`;
+
+  const firstExperienceEn = `Design and development of a custom ERP system using JavaScript, optimizing the user interface to enhance customer experience. Implementation of tailored web solutions to meet various business needs, along with improvements in logistics processes that contributed to code efficiency. Additionally, I developed functions to create, filter, and edit information using MySQL Shell in Visual Studio.`;
+
+  const [firstExperienceText, setfirstExperienceText] = useState(language === 'es' ? firstExperienceEs : firstExperienceEn);
+  const [firstExperienceFade, setfirstExperienceFade] = useState(false);
+
+  useEffect(() => {
+    setfirstExperienceFade(true);
+    const timeout = setTimeout(() => {
+      setfirstExperienceText(language === 'es' ? firstExperienceEs : firstExperienceEn);
+      setfirstExperienceFade(false);
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, [language, firstExperienceEs, firstExperienceEn]);
+
 
   return (
     <>
@@ -125,9 +142,22 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
     </div>
 
     <div className="experience-container">
-      <h1 className="experience-title">{language === 'es' ? 'Mi experiencia' : 'Experience'}</h1>
-        
-    </div>  
+      <h1 className="experience-title">
+        {language === 'es' ? 'Mi experiencia' : 'Experience'}
+      </h1>
+
+      <div className="experience-entry">
+        <div className="experience-header">
+          <span className="company-name">Abaco Developmetns</span>
+          <span className="work-type">{language === 'es' ? 'Remoto' : 'Remote'}</span>
+          <span className="date-range">{language === 'es' ? 'Sep 2024 - Dic 2024' : 'Sep 2024 - Dec 2024'}</span>
+        </div>
+        <p className="work-range">{language === 'es' ? 'Desarrollador en prácticas' : 'Developer Intern'}</p>
+        <p className={`experience-content fade ${firstExperienceFade ? 'fade-out' : 'fade-in'}`}>
+          {firstExperienceText}
+        </p>
+      </div>
+    </div>
     </>
   );
 };
