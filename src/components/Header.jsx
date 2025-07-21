@@ -35,7 +35,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
     return () => clearTimeout(timeout);
   }, [language]);
 
-  // Nuevo estado y fade para el texto "Sobre mí"
+  // Estado y fade para el texto "About me"
   const aboutMeEs = `Titulado en Desarrollo de Aplicaciones Multiplataforma, con muchas ganas de aprender y dominar el campo del desarrollo FullStack. Mi objetivo es dominar tanto el frontend como el backend para crear aplicaciones eficientes y escalables que impulsen el crecimiento empresarial.\n
   Actualmente enfocado en:
   - Crear proyectos Full-Stack completos con React + Spring Boot como desarrollador autodidacta.
@@ -60,7 +60,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
     return () => clearTimeout(timeout);
   }, [language, aboutMeEs, aboutMeEn]);
 
-   // Nuevo estado y fade para el texto "First experience"
+   // Estado y fade para el texto "First experience"
   const firstExperienceEs = `Diseño y desarrollo de un ERP a medida utilizando JavaScript, optimizando la interfaz de usuario para mejorar la experiencia del cliente. Implementación de soluciones web personalizadas adaptadas a diversas necesidades empresariales, así como mejoras en los procesos logísticos que contribuyeron a la eficiencia del código. Además, desarrollé funciones para crear, filtrar y editar información mediante MySQL Shell en Visual Studio.`;
 
   const firstExperienceEn = `Design and development of a custom ERP system using JavaScript, optimizing the user interface to enhance customer experience. Implementation of tailored web solutions to meet various business needs, along with improvements in logistics processes that contributed to code efficiency. Additionally, I developed functions to create, filter, and edit information using MySQL Shell in Visual Studio.`;
@@ -76,6 +76,23 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
     }, 300);
     return () => clearTimeout(timeout);
   }, [language, firstExperienceEs, firstExperienceEn]);
+
+  // Estado y fade para el texto "First degree"
+  const degreeTextEs = 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)';
+  const degreeTextEn = 'Advanced Technician in Multiplatform Application Development (DAM)';
+
+  const [degreeText, setDegreeText] = useState(language === 'es' ? degreeTextEs : degreeTextEn);
+  const [degreeFade, setDegreeFade] = useState(false);
+
+  useEffect(() => {
+    setDegreeFade(true); 
+    const timeout = setTimeout(() => {
+      setDegreeText(language === 'es' ? degreeTextEs : degreeTextEn);
+      setDegreeFade(false); 
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [language, degreeTextEs, degreeTextEn]);
 
 
   return (
@@ -170,7 +187,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
           <span className="university-name">I.E.S Infanta Elena</span>
           <span className="education-range">Sep 2021 - Jun 2024</span>
         </div>
-        <p className="degree-name">{language === 'es' ? 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)' : 'Advanced Technician in Multiplatform Application Development (DAM)'}</p>
+      <p className={`degree-name fade ${degreeFade ? 'fade-out' : 'fade-in'}`}>{degreeText}</p>    
     </div>
 
     <div className="projects-container">
@@ -179,13 +196,18 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
       </h1>
 
       <ProjectCards
-        title="Nutrition App (App móvil)"
+        title="Nutrition App"
         description={
           language === 'es'
-            ? 'Blog personal donde comparto experiencias sobre desarrollo, productividad y más.'
+            ? 'He desarrollado una aplicación Android para ayudarte a llevar un control inteligente y personalizado de tu alimentación y actividad física. Un proyecto práctico, funcional y pensado para el día a día.'
             : 'Personal blog where I share experiences about development, productivity, and more.'
         }
-        tags={['Java', 'JavaFX', 'Móvil', 'Fitness', 'Salud']} // puedes añadir los tags que quieras
+        hoverDescription={
+          language === 'es'
+            ? `Aspectos destacados del proyecto:\n\n- Registro inteligente de comidas\n\n- Seguimiento semanal interactivo\n\n- Conteo de pasos en tiempo real\n\n- Gestión personalizada de alimentos\n\n- Escaneo rápido de alimentos\n\n- Base de datos robusta y eficiente`
+            : `- Smart Meal Logging\n- Weekly Interactive Tracking\n- Real-Time Step Counting\n- Custom Food Management\n- Fast Integrated Camera Scanning\n- Robust and Efficient Database`
+        }
+        tags={['JavaFX', 'Móvil', 'Fitness', 'Salud']} // puedes añadir los tags que quieras
         videoSrc={projectDemo}
       />
     </div>

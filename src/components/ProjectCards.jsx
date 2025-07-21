@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import '../styles/project-cards.css';
 
-const ProjectCards = ({ title, description, tags, videoSrc }) => {
+const ProjectCards = ({ title, description, hoverDescription, tags, videoSrc }) => {
   const cardRef = useRef();
 
   const handleClick = () => {
@@ -15,8 +15,17 @@ const ProjectCards = ({ title, description, tags, videoSrc }) => {
     <div className="project-card" ref={cardRef} onClick={handleClick}>
         <div className="left-column">
             <h2 className="project-title">{title}</h2>
-            <p>{description}</p>
+            <p className="default-description">{description}</p>
 
+            {hoverDescription && (
+            <p className="hover-description">
+              {hoverDescription.split('\n').map((line, i) => (
+                <span key={i}>
+                  {line.trim()}
+                  <br />
+                </span>
+              ))}</p>
+            )}
             {tags && tags.length > 0 && (
             <div className="tags">{tags.map((tag, i) => (
                 <span key={i} className="tag">{tag}</span>))}
