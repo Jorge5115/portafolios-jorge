@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/portafolios-jorge/static/css/main.2bf39010.css",
+    "main.js": "/portafolios-jorge/static/js/main.276bdfc8.js",
+    "static/media/first-project.mp4": "/portafolios-jorge/static/media/first-project.d102779db7927627c0ce.mp4",
+    "static/media/foto-jorge.jpg": "/portafolios-jorge/static/media/foto-jorge.8a02a2080728e67ec4da.jpg",
+    "index.html": "/portafolios-jorge/index.html",
+    "main.2bf39010.css.map": "/portafolios-jorge/static/css/main.2bf39010.css.map",
+    "main.276bdfc8.js.map": "/portafolios-jorge/static/js/main.276bdfc8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2bf39010.css",
+    "static/js/main.276bdfc8.js"
+  ]
+}
