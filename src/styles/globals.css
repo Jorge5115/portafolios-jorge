@@ -330,3 +330,112 @@ p, .header-title, .contacto p {
 .tool-tag:hover {
   background-color: #c5c5c5;
 }
+
+/* ===== MEDIA QUERIES PARA DISPOSITIVOS MÓVILES ===== */
+@media (max-width: 768px) {
+  /* Header responsive */
+  .header-container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .header-info {
+    min-width: auto;
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .header-foto {
+    margin: 0 auto;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: 120px;
+    height: 120px;
+  }
+  
+  /* Ajustes de texto */
+  .header-name {
+    font-size: 1.4rem;
+  }
+  
+  .header-title {
+    font-size: 0.95rem;
+  }
+  
+  .contacto p {
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+  
+  /* Contenedores principales */
+  .body-container,
+  .experience-container,
+  .education-container,
+  .projects-container,
+  .tools-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  /* Contenido de texto */
+  .about-me-content,
+  .experience-content,
+  .degree-name {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  
+  /* Ajustes específicos para experiencia */
+  .experience-header,
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .date-range,
+  .education-range {
+    margin-left: 0;
+  }
+  
+  .work-type {
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Herramientas */
+  .tools-tags {
+    justify-content: center;
+  }
+  
+  .tool-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes adicionales para pantallas muy pequeñas */
+  .header-name {
+    font-size: 1.3rem;
+  }
+  
+  .header-title {
+    font-size: 0.9rem;
+  }
+  
+  .about-me-title,
+  .experience-title,
+  .education-title,
+  .projects-title,
+  .tools-title {
+    font-size: 1.2rem;
+  }
+  
+  .company-name,
+  .university-name {
+    font-size: 1rem;
+  }
+}
