@@ -196,7 +196,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
       </h1>
 
       <ProjectCards
-        title="Nutrition App"
+        title="Gear Fit App"
         description={
           language === 'es'
             ? 'He desarrollado una aplicación Android para ayudarte a llevar un control inteligente y personalizado de tu alimentación y actividad física. Un proyecto práctico, funcional y pensado para el día a día.'
@@ -216,7 +216,28 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
       <h1 className="tools-title">
         {language === 'es' ? 'Herramientas' : 'Tools'}
       </h1>
+      <div className="tools-tags">
+        {[
+          'MongoDB',
+          'JavaFX',
+          'JavaSwing',
+          'Android Sutdio',
+          'DBeaver',
+          'Programación funcional',
+          'Java / Java 8',
+          'Interfaces funcionales',
+          'Java Database Connectivity (JDBC)',
+          'SQL / MySQL / SQLite',
+          'JavaScript',
+          'Git / GitHub',
+        ].map((tool, index) => (
+          <span key={index} className="tool-tag">
+            {tool}
+          </span>
+        ))}
+      </div>
     </div>
+
     </>
   );
 };
