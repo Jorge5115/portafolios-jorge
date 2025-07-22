@@ -19,13 +19,15 @@ const ProjectCards = ({ title, description, hoverDescription, tags, videoSrc }) 
 
             {hoverDescription && (
             <p className="hover-description">
-              {hoverDescription.split('\n').map((line, i) => (
-                <span key={i}>
-                  {line.trim()}
+              {hoverDescription.split('\n\n').map((line, i) => (
+                <span key={i} className="hover-line">
+                  {line}
                   <br />
                 </span>
-              ))}</p>
+              ))}
+            </p>
             )}
+            
             {tags && tags.length > 0 && (
             <div className="tags">{tags.map((tag, i) => (
                 <span key={i} className="tag">{tag}</span>))}

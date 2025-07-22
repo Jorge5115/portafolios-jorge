@@ -200,16 +200,22 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         description={
           language === 'es'
             ? 'He desarrollado una aplicación Android para ayudarte a llevar un control inteligente y personalizado de tu alimentación y actividad física. Un proyecto práctico, funcional y pensado para el día a día.'
-            : 'Personal blog where I share experiences about development, productivity, and more.'
+            : 'I developed an Android application designed to help you manage your diet and physical activity in a smart and personalized way. A practical, functional project built for daily use.'
         }
         hoverDescription={
           language === 'es'
             ? `Aspectos destacados del proyecto:\n\n- Registro inteligente de comidas\n\n- Seguimiento semanal interactivo\n\n- Conteo de pasos en tiempo real\n\n- Gestión personalizada de alimentos\n\n- Escaneo rápido de alimentos\n\n- Base de datos robusta y eficiente`
-            : `- Smart Meal Logging\n- Weekly Interactive Tracking\n- Real-Time Step Counting\n- Custom Food Management\n- Fast Integrated Camera Scanning\n- Robust and Efficient Database`
+            : `Project highlights:\n\n- Smart meal logging\n\n- Weekly interactive tracking\n\n- Real-time step counting\n\n- Custom food management\n\n- Rapid food scanning\n\n- Robust and efficient database`
         }
-        tags={['JavaFX', 'Móvil', 'Fitness', 'Salud']} // puedes añadir los tags que quieras
+        tags={['Android Studio', 'Java', 'SQLite', 'CameraX', 'Google Ml Kit', 'SensorManager']} // puedes añadir los tags que quieras
         videoSrc={projectDemo}
       />
+    </div>
+
+    <div className="tools-container">
+      <h1 className="tools-title">
+        {language === 'es' ? 'Herramientas' : 'Tools'}
+      </h1>
     </div>
     </>
   );
