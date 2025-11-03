@@ -200,7 +200,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         title={language === 'es' ? 'Notas Personales' : 'Personal Notes'}
         description={
           language === 'es'
-            ? 'Aplicación de notas personales con editor Markdown, búsqueda rápida y almacenamiento local. Pensada para capturar ideas al instante y exportar/importar notas.'
+            ? 'Aplicación de notas personales con un editor Markdown, búsqueda rápida y almacenamiento local. Pensada para capturar ideas al instante y exportar/importar notas.'
             : 'Personal notes app with a Markdown editor, fast search and local storage. Designed to capture ideas quickly and export/import notes.'
         }
         hoverDescription={
