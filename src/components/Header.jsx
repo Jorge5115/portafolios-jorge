@@ -8,6 +8,7 @@ import '../styles/globals.css';
 import '../styles/light-theme.css'; 
 import '../styles/dark-theme.css'; 
 import projectDemo from '../assets/videos/first-project.mp4';
+import personalNotesDemo from '../assets/videos/second-project.mp4';
 
 const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
   // Efecto para cambiar el tema en el HTML root
@@ -196,6 +197,24 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
       </h1>
 
       <ProjectCards
+        title={language === 'es' ? 'Notas Personales' : 'Personal Notes'}
+        description={
+          language === 'es'
+            ? 'Aplicación de notas personales con editor Markdown, búsqueda rápida y almacenamiento local. Pensada para capturar ideas al instante y exportar/importar notas.'
+            : 'Personal notes app with a Markdown editor, fast search and local storage. Designed to capture ideas quickly and export/import notes.'
+        }
+        hoverDescription={
+          language === 'es'
+            ? `Características:\n\n- Editor Markdown con vista previa en tiempo real\n- Almacenamiento local con IndexedDB y export/import\n- Búsqueda por texto y etiquetas\n- PWA instalable y modo offline\n- Copias de seguridad exportables`
+            : `Highlights:\n\n- Markdown editor with real-time preview\n- Local storage using IndexedDB and export/import\n- Full-text search and tagging\n- PWA installable and offline-ready\n- Exportable backups`
+        }
+        tags={['React', 'Vite', 'IndexedDB', 'Markdown', 'PWA', 'TypeScript']}
+        // Si tienes un vídeo horizontal, pásalo aquí y activa videoBelow
+        videoSrc={personalNotesDemo}
+        videoLayout="desktop"
+      />
+
+      <ProjectCards
         title="Gear Fit App"
         description={
           language === 'es'
@@ -209,6 +228,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         }
         tags={['Android Studio', 'Java', 'SQLite', 'CameraX', 'Google Ml Kit', 'SensorManager']} // puedes añadir los tags que quieras
         videoSrc={projectDemo}
+        
       />
     </div>
 

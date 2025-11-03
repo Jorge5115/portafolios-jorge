@@ -11,7 +11,15 @@
   transition: all 0.3s ease-in-out;
   border: 1px solid var(--project-background);
   cursor: pointer;
+  align-items: stretch; /* <-- cambiar a stretch para que la columna de vídeo tenga altura igual a la izquierda */
 }
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Espacio ENTRE cards sin afectar el final */
+}
+
 
 .project-card:hover {
   background: var(--project-background);
@@ -19,6 +27,7 @@
 
 .left-column {
   flex: 1;
+  min-width: 0; /* importante: permite que el texto se encoja y no se corte */
   padding: 1rem;
   transition: flex 0.3s ease;
 }
@@ -63,13 +72,20 @@
   padding: 1rem;
 }
 
+/* === Reveal video on hover (específico para two-column) === */
+.project-card:hover .two-column .right-column {
+  width: 50%; /* o el tamaño que tú quieras */
+  padding: 1rem;
+}
+
 /* === Video fills the available space === */
 .project-card video {
   width: 100%;
-  height: auto;
+  height: 100%; /* ocupará toda la altura de su contenedor */
   display: block;
   border-radius: 8px;
   border: 1px solid var(--project-card);
+  object-fit: cover;
 }
 
 .project-title {
@@ -192,4 +208,130 @@
     width: 100% !important;
     padding: 0 1rem 1rem 1rem !important;
   }
+}
+
+/* Desktop layout: vídeo arriba, oculto hasta hover/click. Cuando aparece empuja la info hacia abajo. */
+.project-card.desktop-layout {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* fila del vídeo: por defecto altura 0 (no visible) */
+.project-card.desktop-layout .video-row {
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  background: #000;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* cuando la tarjeta tiene la clase .video-visible (hover o click) se expande */
+.project-card.desktop-layout.video-visible .video-row {
+  height: 320px; /* ajusta según tu mp4 horizontal */
+}
+
+/* vídeo ocupa todo el contenedor cuando está visible */
+.project-card.desktop-layout .video-row video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* fila de contenido (info abajo) */
+.project-card.desktop-layout .content-row {
+  position: relative;
+  z-index: 2;
+  padding: 18px;
+  background: transparent;
+  transition: padding-top 0.35s ease;
+}
+
+/* opcional: dar un poco más de separación cuando el vídeo está expandido */
+.project-card.desktop-layout.is-hovered .content-row {
+  padding-top: 16px;
+}
+
+/* Mobile / two-column: por defecto la columna derecha está cerrada (0) para que el texto ocupe todo el ancho.
+   Solo cuando haya hover / .video-visible se expande a su tamaño real. */
+.project-card .two-column {
+  display: flex;
+  gap: 16px;
+}
+
+/* izquierda: ocupa todo el espacio disponible y puede encogerse sin cortar texto */
+.project-card .two-column .left-column {
+  flex: 1;
+  min-width: 0;
+}
+
+/* derecha: por defecto cerrada (no reserva ancho) */
+.project-card .two-column .right-column {
+  width: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: width 220ms ease, max-width 220ms ease, padding 200ms ease;
+  padding: 0; /* padding solo cuando se muestra */
+  display: block;
+  box-sizing: border-box;
+}
+
+/* cuando se activa la visibilidad del vídeo (hover o clase .video-visible) se muestra.
+   Volvemos a un ancho similar al original (50%) para mantener el tamaño previo del vídeo */
+.project-card.video-visible .two-column .right-column,
+.project-card:hover .two-column .right-column {
+  width: 50%;       /* ancho del vídeo cuando se muestra (ajusta si quieres 45%/50%) */
+  max-width: 420px; /* límite máximo */
+  padding: 1rem;
+}
+
+/* El <video> en la columna derecha debe ocupar toda la columna y mantener una altura razonable */
+.project-card .two-column .right-column video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* garantía adicional para layout en variantes donde usamos .content-row */
+.project-card .left-column,
+.project-card .content-row {
+  min-width: 0;
+}
+
+/* botón de zoom sobre el vídeo */
+.video-row { position: relative; }
+.video-row .zoom-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 10;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* fallback: zoom dentro del contenedor (no fullscreen) */
+.video-row.zoomed video {
+  transform: scale(1.6); /* ajusta nivel de zoom */
+  transform-origin: center top;
+  transition: transform 220ms ease;
+}
+
+/* cuando zoomed, evita que el vídeo recorte demasiado: permite overflow visible */
+.video-row.zoomed {
+  overflow: visible;
+}
+
+/* Mantener vídeo responsivo en fullscreen fallback */
+.video-row video {
+  transition: transform 220ms ease;
 }
