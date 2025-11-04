@@ -17,9 +17,13 @@
 .projects-container {
   display: flex;
   flex-direction: column;
-  gap: 25px; /* Espacio ENTRE cards sin afectar el final */
 }
 
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; 
+}
 
 .project-card:hover {
   background: var(--project-background);

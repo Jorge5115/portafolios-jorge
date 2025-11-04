@@ -196,20 +196,20 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         {language === 'es' ? 'Proyectos' : 'Projects'}
       </h1>
 
+      <div className="cards-wrapper">
       <ProjectCards
         title={language === 'es' ? 'Notas Personales' : 'Personal Notes'}
         description={
           language === 'es'
-            ? 'Aplicación de notas personales con un editor Markdown, búsqueda rápida y almacenamiento local. Pensada para capturar ideas al instante y exportar/importar notas.'
-            : 'Personal notes app with a Markdown editor, fast search and local storage. Designed to capture ideas quickly and export/import notes.'
+            ? 'Aplicación web full-stack diseñada para gestionar notas personales de forma rápida y eficaz. Combina un backend que maneja el almacenamiento y procesamiento de los datos con un frontend que ofrece una interfaz de usuario amigable e intuitiva.'
+            : 'Full-stack web application designed for quick and efficient personal note management. It combines a backend that handles data storage and processing with a frontend that offers a user-friendly and intuitive interface.'
         }
         hoverDescription={
           language === 'es'
-            ? `Características:\n\n- Editor Markdown con vista previa en tiempo real\n- Almacenamiento local con IndexedDB y export/import\n- Búsqueda por texto y etiquetas\n- PWA instalable y modo offline\n- Copias de seguridad exportables`
-            : `Highlights:\n\n- Markdown editor with real-time preview\n- Local storage using IndexedDB and export/import\n- Full-text search and tagging\n- PWA installable and offline-ready\n- Exportable backups`
+            ? `Aspectos destacados del proyecto:\n\n- Crear nuevas notas rápidamente\n\n- Ver notas almacenadas de forma organizada\n\n- Editar contenido de notas existentes\n\n- Eliminar notas que ya no sean necesarias\n\n- Interfaz moderna e intuitiva`
+            : `Project highlights:\n\n- Quickly create new notes\n\n- View stored notes in an organized way\n\n- Edit existing note content\n\n- Delete notes that are no longer needed\n\n- Modern and intuitive interface`
         }
-        tags={['React', 'Vite', 'IndexedDB', 'Markdown', 'PWA', 'TypeScript']}
-        // Si tienes un vídeo horizontal, pásalo aquí y activa videoBelow
+        tags={['Full-Stack', 'H2 Database', 'CRUD', 'IntelliJ IDEA', 'Visual Studio Code']}
         videoSrc={personalNotesDemo}
         videoLayout="desktop"
       />
@@ -230,6 +230,7 @@ const Header = ({ darkMode, onToggleTheme, language, onToggleLanguage }) => {
         videoSrc={projectDemo}
         
       />
+      </div>
     </div>
 
     <div className="tools-container">
