@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/portafolios-jorge/static/css/main.68b0087f.css",
-    "main.js": "/portafolios-jorge/static/js/main.d1c48b39.js",
+    "main.css": "/portafolios-jorge/static/css/main.382a9d7e.css",
+    "main.js": "/portafolios-jorge/static/js/main.eca3e94e.js",
     "static/media/first-project.mp4": "/portafolios-jorge/static/media/first-project.d102779db7927627c0ce.mp4",
     "static/media/second-project.mp4": "/portafolios-jorge/static/media/second-project.4669e44e1496c573f076.mp4",
     "static/media/foto-jorge.jpg": "/portafolios-jorge/static/media/foto-jorge.8a02a2080728e67ec4da.jpg",
     "index.html": "/portafolios-jorge/index.html",
-    "main.68b0087f.css.map": "/portafolios-jorge/static/css/main.68b0087f.css.map",
-    "main.d1c48b39.js.map": "/portafolios-jorge/static/js/main.d1c48b39.js.map"
+    "main.382a9d7e.css.map": "/portafolios-jorge/static/css/main.382a9d7e.css.map",
+    "main.eca3e94e.js.map": "/portafolios-jorge/static/js/main.eca3e94e.js.map"
   },
   "entrypoints": [
-    "static/css/main.68b0087f.css",
-    "static/js/main.d1c48b39.js"
+    "static/css/main.382a9d7e.css",
+    "static/js/main.eca3e94e.js"
   ]
 }
