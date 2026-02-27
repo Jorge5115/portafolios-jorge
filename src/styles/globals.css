@@ -16,10 +16,10 @@
 
 /* Resto de tus estilos compactos se mantienen igual */
 .header-info {
-  min-width: 475px;
-  max-width: 475px;
+  min-width: 525px;
+  max-width: 525px;
   flex: 0 1 auto; /* No se expande forzadamente */
-  padding-right: 6rem;
+  padding-right: 2.5rem;
   text-align: left;
 }
 

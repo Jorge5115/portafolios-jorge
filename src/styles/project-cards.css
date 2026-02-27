@@ -11,7 +11,7 @@
   transition: all 0.3s ease-in-out;
   border: 1px solid var(--project-background);
   cursor: pointer;
-  align-items: stretch; /* <-- cambiar a stretch para que la columna de vídeo tenga altura igual a la izquierda */
+  align-items: stretch;
 }
 
 .projects-container {
@@ -22,7 +22,7 @@
 .cards-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 25px; 
+  gap: 25px;
 }
 
 .project-card:hover {
@@ -31,7 +31,7 @@
 
 .left-column {
   flex: 1;
-  min-width: 0; /* importante: permite que el texto se encoja y no se corte */
+  min-width: 0;
   padding: 1rem;
   transition: flex 0.3s ease;
 }
@@ -63,29 +63,20 @@
   color: #333;
 }
 
-/* === Right side hidden initially === */
 .right-column {
   width: 0;
   overflow: hidden;
   transition: width 0.2s ease;
 }
 
-/* === Reveal video on hover === */
 .project-card:hover .right-column {
-  width: 50%; /* o el tamaño que tú quieras */
+  width: 50%;
   padding: 1rem;
 }
 
-/* === Reveal video on hover (específico para two-column) === */
-.project-card:hover .two-column .right-column {
-  width: 50%; /* o el tamaño que tú quieras */
-  padding: 1rem;
-}
-
-/* === Video fills the available space === */
 .project-card video {
   width: 100%;
-  height: 100%; /* ocupará toda la altura de su contenedor */
+  height: 100%;
   display: block;
   border-radius: 8px;
   border: 1px solid var(--project-card);
@@ -96,7 +87,7 @@
   font-weight: 600;
   font-size: 1.4rem;
   color: var(--text-primary);
-  margin-bottom: 1rem; /* Espacio más consistente */
+  margin-bottom: 1rem;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -104,7 +95,7 @@
   font-weight: 800;
   font-size: 2rem;
   color: var(--text-primary);
-  margin-bottom: 1rem; /* Espacio más consistente */
+  margin-bottom: 1rem;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -114,6 +105,9 @@
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-top: 0.5rem;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .project-card:hover .hover-description {
@@ -129,42 +123,36 @@
 }
 
 .project-card:hover .default-description {
-   font-weight: 650;
-}
-
-.hover-description {
-  white-space: pre-wrap; /* respeta saltos */
-  font-size: 0.95rem;
-  line-height: 1.6; /* ajusta altura entre líneas */
+  font-weight: 650;
 }
 
 .hover-line {
   display: block;
-  margin-bottom: 0.5rem; /* evita espacio doble */
+  margin-bottom: 0.5rem;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .project-card {
     flex-direction: column;
     max-width: 100%;
   }
-  
+
   .left-column {
     padding: 1rem;
   }
-  
+
   .right-column {
     width: 100% !important;
     padding: 0 1rem 1rem 1rem !important;
     height: auto;
   }
-  
+
   .project-card video {
     max-height: 200px;
     object-fit: contain;
   }
-  
+
   .left-column h2 {
     font-size: 1.3rem;
   }
@@ -174,47 +162,48 @@
   .left-column h2 {
     font-size: 1.1rem;
   }
-  
-  .left-column p, .hover-description {
+
+  .left-column p,
+  .hover-description {
     font-size: 0.85rem;
   }
-  
+
   .tag {
     font-size: 0.75rem;
     padding: 0.2rem 0.5rem;
   }
-  
+
   .tags {
     gap: 0.3rem;
   }
 }
 
-/* Touch device detection */
+/* Touch devices */
 @media (hover: none) {
   .project-card {
     background: var(--project-background);
   }
-  
+
   .hover-description {
     display: block !important;
   }
-  
+
   .default-description {
     display: none !important;
   }
-  
+
   .left-column h2 {
     font-size: 1.3rem !important;
     font-weight: 600 !important;
   }
-  
+
   .right-column {
     width: 100% !important;
     padding: 0 1rem 1rem 1rem !important;
   }
 }
 
-/* Desktop layout: vídeo arriba, oculto hasta hover/click. Cuando aparece empuja la info hacia abajo. */
+/* ===== DESKTOP LAYOUT (vídeo arriba) ===== */
 .project-card.desktop-layout {
   display: block;
   position: relative;
@@ -222,7 +211,6 @@
   border-radius: 10px;
 }
 
-/* fila del vídeo: por defecto altura 0 (no visible) */
 .project-card.desktop-layout .video-row {
   width: 100%;
   height: 0;
@@ -233,12 +221,10 @@
   border-top-right-radius: 10px;
 }
 
-/* cuando la tarjeta tiene la clase .video-visible (hover o click) se expande */
 .project-card.desktop-layout.video-visible .video-row {
-  height: 320px; /* ajusta según tu mp4 horizontal */
+  height: 320px;
 }
 
-/* vídeo ocupa todo el contenedor cuando está visible */
 .project-card.desktop-layout .video-row video {
   width: 100%;
   height: 100%;
@@ -246,54 +232,43 @@
   display: block;
 }
 
-/* fila de contenido (info abajo) */
 .project-card.desktop-layout .content-row {
   position: relative;
   z-index: 2;
-  padding: 18px;
+  padding: 1rem;
+  margin-top: -15px;
   background: transparent;
   transition: padding-top 0.35s ease;
 }
 
-/* opcional: dar un poco más de separación cuando el vídeo está expandido */
-.project-card.desktop-layout.is-hovered .content-row {
-  padding-top: 16px;
-}
-
-/* Mobile / two-column: por defecto la columna derecha está cerrada (0) para que el texto ocupe todo el ancho.
-   Solo cuando haya hover / .video-visible se expande a su tamaño real. */
+/* ===== MOBILE LAYOUT (two-column) ===== */
 .project-card .two-column {
   display: flex;
   gap: 16px;
 }
 
-/* izquierda: ocupa todo el espacio disponible y puede encogerse sin cortar texto */
 .project-card .two-column .left-column {
   flex: 1;
   min-width: 0;
 }
 
-/* derecha: por defecto cerrada (no reserva ancho) */
 .project-card .two-column .right-column {
   width: 0;
   max-width: 0;
   overflow: hidden;
   transition: width 220ms ease, max-width 220ms ease, padding 200ms ease;
-  padding: 0; /* padding solo cuando se muestra */
+  padding: 0;
   display: block;
   box-sizing: border-box;
 }
 
-/* cuando se activa la visibilidad del vídeo (hover o clase .video-visible) se muestra.
-   Volvemos a un ancho similar al original (50%) para mantener el tamaño previo del vídeo */
 .project-card.video-visible .two-column .right-column,
 .project-card:hover .two-column .right-column {
-  width: 50%;       /* ancho del vídeo cuando se muestra (ajusta si quieres 45%/50%) */
-  max-width: 420px; /* límite máximo */
+  width: 50%;
+  max-width: 420px;
   padding: 1rem;
 }
 
-/* El <video> en la columna derecha debe ocupar toda la columna y mantener una altura razonable */
 .project-card .two-column .right-column video {
   width: 100%;
   height: 100%;
@@ -301,41 +276,179 @@
   display: block;
 }
 
-/* garantía adicional para layout en variantes donde usamos .content-row */
 .project-card .left-column,
 .project-card .content-row {
   min-width: 0;
 }
 
-/* botón de zoom sobre el vídeo */
-.video-row { position: relative; }
-.video-row .zoom-btn {
+/* ===== BOTÓN ZOOM (unificado para ambos layouts) ===== */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper .zoom-btn {
   position: absolute;
   right: 12px;
   top: 12px;
   z-index: 10;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   border: none;
   padding: 6px 8px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.2s ease;
 }
 
-/* fallback: zoom dentro del contenedor (no fullscreen) */
-.video-row.zoomed video {
-  transform: scale(1.6); /* ajusta nivel de zoom */
-  transform-origin: center top;
-  transition: transform 220ms ease;
+.video-wrapper .zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
 }
 
-/* cuando zoomed, evita que el vídeo recorte demasiado: permite overflow visible */
-.video-row.zoomed {
-  overflow: visible;
+/* Video en fullscreen: sin recorte */
+video:fullscreen {
+  object-fit: contain;
+  background: #000;
 }
 
-/* Mantener vídeo responsivo en fullscreen fallback */
-.video-row video {
-  transition: transform 220ms ease;
+/* Compatibilidad con webkit (Safari) */
+video:-webkit-full-screen {
+  object-fit: contain;
+  background: #000;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  position: relative;
+  background: var(--project-background);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(0,0,0,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 10;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+/* Desktop modal: video arriba, info abajo */
+.modal-video-row {
+  width: 100%;
+  height: 320px;
+  background: #000;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  overflow: hidden;
+}
+
+.modal-video-row .video-wrapper,
+.modal-video-row video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-content-row {
+  padding: 2rem;
+  margin-top: -30px; /* ajusta hasta que quede bien */
+}
+
+/* Mobile modal: two-column */
+.modal-two-column {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.modal-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-right {
+  width: 45%;
+  flex-shrink: 0;
+}
+
+.modal-right .video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+.modal-right video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Modal: forzar hover-description visible y título grande */
+.modal-card .hover-description {
+  display: block !important;
+}
+
+.modal-card .project-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+}
+
+.modal-card .default-description {
+  font-weight: 650;
+}
+
+@media (max-width: 600px) {
+  .modal-two-column {
+    flex-direction: column;
+  }
+
+  .modal-right {
+    width: 100%;
+  }
+
+  .modal-video-row {
+    height: 200px;
+  }
 }
