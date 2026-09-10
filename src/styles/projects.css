@@ -1,0 +1,460 @@
+.projects {
+  padding: 72px 0 24px;
+}
+
+/* ===== CARRUSEL INFINITO (cinta transportadora) ===== */
+.carousel {
+  --carousel-duration: 55s;
+  overflow: hidden;
+  position: relative;
+  padding: 8px 0 16px;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+  animation: carousel-drift var(--carousel-duration) linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+/* El carrusel solo arranca cuando todos los vídeos (original + clon)
+   ya están cargados: así el clon nunca se congela re-buffereando al entrar
+   en pantalla y el bucle es continuo. */
+.carousel-track.is-ready {
+  animation-play-state: running;
+}
+
+.carousel-clone {
+  display: flex;
+}
+
+/* Al pausar la animación cuando se pasa el cursor sobre cualquier tarjeta */
+.carousel:hover .carousel-track,
+.carousel:focus-within .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes carousel-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Tarjetas de altura fija e idéntica para todo el carrusel.
+   Dimensiones fijas en px -> la distancia -50% del bucle es exacta. */
+.carousel-card {
+  flex: 0 0 auto;
+  width: 520px;
+  height: 292px;
+  margin-right: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.carousel-card:hover {
+  transform: translateY(-4px);
+}
+
+.carousel-card:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Tarjeta vertical (Gear Fit): mockup de dispositivo tipo teléfono.
+   IMPORTANTE: el marco negro NO es un border. Es el fondo oscuro (#1a1a1a)
+   de la carcasa que se ve alrededor de .card-media. Como la pantalla es de
+   tamaño fijo y el flex la centra, el grosor real del marco =
+   (carcasa - pantalla) / 2 en cada eje; por eso cambiar padding apenas se nota.
+   Para un marco de 3px: pantalla = carcasa - 6px y padding: 3px. */
+.carousel-card.portrait {
+  width: 150px;
+  height: 292px;
+  padding: 4px;
+  background: #1a1a1a;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* "Dynamic Island": pastilla negra alargada centrada en la parte superior,
+   superpuesta sobre la pantalla (como en iPhone) */
+.carousel-card.portrait::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  width: 44px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #000;
+  z-index: 1;
+}
+
+/* Lente secundaria (punto verde) dentro de la Dynamic Island,
+   descentrada hacia la derecha de la pastilla */
+.carousel-card.portrait::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 55%;
+  width: 5px;
+  height: 5px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* Pantalla: llena la carcasa dejando solo 3px de marco en cada lado */
+.carousel-card.portrait .card-media {
+  flex: 0 0 auto;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.card-media {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Las grabaciones de escritorio muestran el navegador con espacio muerto
+   debajo de la ventana: un zoom ligero con origen arriba recorta ese hueco
+   inferior sin tocar la barra del navegador. */
+.carousel-card:not(.portrait) .card-media video {
+  transform: scale(1.18);
+  transform-origin: 50% 10%;
+}
+
+/* Personal Notes (segundo vídeo): más espacio muerto arriba -> el origen de
+   zoom baja al 25% y el escala sube un poco para recortar más la parte alta
+   y mostrar más contenido del centro/inferior. Solo afecta a esta tarjeta. */
+.carousel-card.card-personal-notes .card-media video {
+  transform: scale(1.25);
+  transform-origin: 50% 50%;
+}
+
+/* Sin zoom: muestra el vídeo al 100%, sin recortar nada del contenido */
+.carousel-card.portrait .card-media video {
+  transform: scale(1);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background: var(--button-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+/* ===== MODAL DE DETALLE ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -8px 0 16px;
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: var(--button-bg-hover);
+}
+
+.modal-media {
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 4px 0 18px;
+}
+
+.modal-media video {
+  display: block;
+  width: 100%;
+  max-height: 42vh;
+  object-fit: contain;
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  color: var(--text-color);
+}
+
+.modal-description {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted-color);
+  margin: 0 0 16px;
+}
+
+.modal-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.modal-detail-line {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.modal-detail-line.bullet {
+  padding-left: 20px;
+  position: relative;
+  color: var(--muted-color);
+}
+
+.modal-detail-line.bullet::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-color);
+}
+
+.modal-repo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.modal-repo:hover {
+  background: var(--button-bg-hover);
+  border-color: var(--accent-color);
+}
+
+/* ===== OTROS PROYECTOS (lista) ===== */
+.other-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.other-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.other-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.other-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.other-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.other-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.other-badge.recently-finished {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.other-description {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted-color);
+}
+
+.other-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background: var(--button-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.tech-tag svg {
+  font-size: 0.9rem;
+}
+
+.other-repo {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+  color: var(--muted-color);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.other-repo svg {
+  width: 18px;
+  height: 18px;
+}
+
+.other-repo:hover {
+  background: var(--button-bg-hover);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 720px) {
+  .carousel {
+    --carousel-duration: 90s;
+  }
+
+  .carousel-card {
+    width: 360px;
+    height: 202px;
+    margin-right: 14px;
+  }
+
+  .carousel-card.portrait {
+    width: 122px;
+    height: 202px;
+    padding: 3px;
+    border-radius: 22px;
+  }
+
+  .carousel-card.portrait::before {
+    top: 6px;
+    width: 36px;
+    height: 10px;
+  }
+
+  .carousel-card.portrait::after {
+    top: 9px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .carousel-card.portrait .card-media {
+    width: 116px;
+    height: 196px;
+    border-radius: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    animation: none;
+  }
+}

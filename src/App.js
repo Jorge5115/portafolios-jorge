@@ -1,30 +1,40 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import './styles/globals.css';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
+import ProjectsList from './components/ProjectsList';
+import Stack from './components/Stack';
+import Contact from './components/Contact';
+import './App.css';
 
 function App() {
-  // Estados para controlar tema e idioma
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState('es'); // 'es' o 'en'
+  const [language, setLanguage] = useState('en');
 
-  // Función para cambiar el tema
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  useEffect(() => {
+    document.documentElement.className = darkMode ? 'dark-theme' : 'light-theme';
+  }, [darkMode]);
 
-  // Función para cambiar el idioma
-  const toggleLanguage = () => {
-    setLanguage(prevLang => prevLang === 'es' ? 'en' : 'es');
-  };
+  const toggleTheme = () => setDarkMode(prev => !prev);
+  const toggleLanguage = () => setLanguage(prev => (prev === 'es' ? 'en' : 'es'));
 
   return (
-    <div className={`app ${darkMode ? 'dark-theme' : ''}`}>
-      <Header 
+    <div className="app">
+      <Header
         darkMode={darkMode}
         onToggleTheme={toggleTheme}
         language={language}
         onToggleLanguage={toggleLanguage}
       />
+      <main>
+        <Hero language={language} />
+        <Projects language={language} />
+        <Experience language={language} />
+        <ProjectsList language={language} />
+        <Stack language={language} />
+        <Contact language={language} />
+      </main>
     </div>
   );
 }
