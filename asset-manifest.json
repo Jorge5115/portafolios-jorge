@@ -1,18 +1,20 @@
 {
   "files": {
-    "main.css": "/portafolios-jorge/static/css/main.1f1337ae.css",
-    "main.js": "/portafolios-jorge/static/js/main.32a13f5d.js",
-    "static/media/third-project.mp4": "/portafolios-jorge/static/media/third-project.c420f702d2a59858988f.mp4",
+    "main.css": "/portafolios-jorge/static/css/main.6fc1c1c3.css",
+    "main.js": "/portafolios-jorge/static/js/main.5135629b.js",
     "static/media/fourth-project.mp4": "/portafolios-jorge/static/media/fourth-project.738307dab6575567423f.mp4",
-    "static/media/first-project.mp4": "/portafolios-jorge/static/media/first-project.d102779db7927627c0ce.mp4",
+    "static/media/third-project.mp4": "/portafolios-jorge/static/media/third-project.6c54aeab7af68bbbdc7f.mp4",
+    "static/media/fifth-project.mp4": "/portafolios-jorge/static/media/fifth-project.f3f8f5a3c6c7a5611e73.mp4",
+    "static/media/first-project.mp4": "/portafolios-jorge/static/media/first-project.ece17eb5f29eaf0f883b.mp4",
     "static/media/second-project.mp4": "/portafolios-jorge/static/media/second-project.4669e44e1496c573f076.mp4",
     "static/media/foto-jorge.jpg": "/portafolios-jorge/static/media/foto-jorge.8a02a2080728e67ec4da.jpg",
+    "static/media/poster-first-project.jpg": "/portafolios-jorge/static/media/poster-first-project.714f7b34ab48e27dbddf.jpg",
     "index.html": "/portafolios-jorge/index.html",
-    "main.1f1337ae.css.map": "/portafolios-jorge/static/css/main.1f1337ae.css.map",
-    "main.32a13f5d.js.map": "/portafolios-jorge/static/js/main.32a13f5d.js.map"
+    "main.6fc1c1c3.css.map": "/portafolios-jorge/static/css/main.6fc1c1c3.css.map",
+    "main.5135629b.js.map": "/portafolios-jorge/static/js/main.5135629b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f1337ae.css",
-    "static/js/main.32a13f5d.js"
+    "static/css/main.6fc1c1c3.css",
+    "static/js/main.5135629b.js"
   ]
 }
