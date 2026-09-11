@@ -5,7 +5,6 @@ import firstProjectDemo from '../assets/videos/first-project.mp4';
 import secondProjectDemo from '../assets/videos/second-project.mp4';
 import thirdProjectDemo from '../assets/videos/third-project.mp4';
 import fourthProjectDemo from '../assets/videos/fourth-project.mp4';
-import firstProjectPoster from '../assets/poster-first-project.jpg';
 import fifthProjectDemo from '../assets/videos/fifth-project.mp4';
 
 export const PROJECTS = [
@@ -70,7 +69,6 @@ export const PROJECTS = [
     },
     tags: ['Android Studio', 'Java', 'SQLite', 'CameraX', 'Google ML Kit', 'SensorManager'],
     video: firstProjectDemo,
-    poster: firstProjectPoster,
     videoClass: 'mobile',
     repo: 'https://github.com/Jorge5115/gearFit-android',
   },
